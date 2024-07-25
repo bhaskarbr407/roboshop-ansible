@@ -11,10 +11,10 @@
     file: app_prereq.yml
 
 ## This step is no more needed, as CI pipeline is taking care
-- name: Install NodeJS dependencies
-  ansible.builtin.shell: npm install
-  args:
-    chdir: /app
+#- name: Install NodeJS dependencies
+#  ansible.builtin.shell: npm install
+#  args:
+#    chdir: /app
 
 - name: Include schema setup
   ansible.builtin.import_tasks:
@@ -24,7 +24,7 @@
   ansible.builtin.import_tasks:
     file: systemd_setup.yml
 
-#- name: Import Prometheus
-#  ansible.builtin.import_role:
-#    name: prometheus
-#    tasks_from: node_exporter
+- name: Import Prometheus
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node_exporter
